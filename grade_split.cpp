@@ -139,6 +139,8 @@ TEST(Split, InputSetToNull)
 
 	EXPECT_EQ(nullptr, list);
 
+  //InputSetToNull(list);
+
 	deleteList(odds);
 	deleteList(evens);
 }
