@@ -1,8 +1,8 @@
 #ifndef ULLISTSTR_H
 #define ULLISTSTR_H
 #include <string>
-
 #define ARRSIZE 10
+
 class ULListStr {
  public:
   struct Item {
@@ -16,6 +16,7 @@ class ULListStr {
      * first=0, last=ARRSIZE indicates the array
      * is fully occupied
      */
+
     size_t first, last;
     Item *prev;
     Item *next;
@@ -113,6 +114,7 @@ class ULListStr {
    */
   void clear();
 
+
  private:
   /** 
    * Returns a pointer to the item at index, loc,
@@ -120,7 +122,6 @@ class ULListStr {
    *   - MUST RUN in O(n) 
    */
   std::string* getValAtLoc(size_t loc) const;
-
 
   /**
    * Data members

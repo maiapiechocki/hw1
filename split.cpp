@@ -27,38 +27,27 @@ void split(Node*& in, Node*& odds, Node*& evens)
     return;
   }
 
-  // recursive case:
+  // recursive case evens:
   if (in->value % 2 == 0) {
     // if the currrent node's value is even:
     // set 'evens' to nullptr (initialization/reset)
     evens = nullptr; 
     // set 'evens' to the address of the current node
-    evens = &*in;
-
-    // recursively call split for the next node in the list
-    split(in->next, odds, evens->next);
-
-    // chk if next node is nullptr (end of the list) 
-    if (in->next == nullptr)
-    {
-      // if it is the last even element, set 'evens' to the address of the current node
-      evens = &*in;
-
-      // set 'in' to nullptr to signal the end of the list
-      in = nullptr;
-    }
-  } else {
-    // if the current node's value is odd:
-    // set 'odds' to nullptr (initialization/reset)
-    odds=nullptr;
-
-    // set 'odds' to the address of the current node
-    odds=&*in;
-
-    // recursively call split for the next node in the list
-    split(in->next, odds->next, evens);
-
-    // set 'in' to nullptr to bc we are at the end of the list
+    evens = in;
+    // temp to store next ptr to next item before w make 'in' null(null->next DNE)
+    Node* temp = in->next; 
     in = nullptr;
+    // recursively call split for the next node in the list
+    split(temp, odds, evens->next);
+    
+  } else { //recursive case odds:
+
+    odds=nullptr;
+    odds=in;
+    Node* temp = in->next; 
+    in = nullptr;
+
+    split(temp, odds->next, evens);
+    
   }
 }
